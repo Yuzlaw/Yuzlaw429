@@ -16,7 +16,7 @@ jobs:
         with:
           node-version: 20
       - name: Install & Build
-        run: |    run: |
+        run: | 
       cd "${{ github.workspace }}"/育升總務部_PWA/itinerary_pwa
       npm install --legacy-peer-deps
       npm run build
