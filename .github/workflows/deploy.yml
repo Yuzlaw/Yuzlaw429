@@ -23,7 +23,7 @@ jobs:
       - name: 安裝與建置
         working-directory: "育昇總務部_PWA"
         run: |
-          npm install --no-fund --no-audit
+          npm install --no-fund --no-audit --legacy-peer-deps
           npm run build
 
       - name: 偵測輸出資料夾
