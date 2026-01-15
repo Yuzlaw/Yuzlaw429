@@ -17,19 +17,25 @@ jobs:
           node-version: 20
       - name: Install & Build
         run: |
-          cd "育升總務部_PWA"
+          cd "${{ github.workspace }}/育升總務部_PWA"
           npm install --legacy-peer-deps
           npm run build
       - name: Detect output folder
         id: out
         run: |
-          cd "育升總務部_PWA"
-          if [ -d "dist" ]; then echo "dir=dist" >> $GITHUB_OUTPUT; exit 0; fi
-          if [ -d "build" ]; then echo "dir=build" >> $GITHUB_OUTPUT; exit 0; fi
+          for dir in "${{ github.workspace }}"/*PWA; do
+            if [ -d "$dir/dist" ]; then
+              echo "dir=dist" >> $GITHUB_OUTPUT
+              exit 0
+            elif [ -d "$dir/build" ]; then
+              echo "dir=build" >> $GITHUB_OUTPUT
+              exit 0
+            fi
+          done
           echo "No dist or build folder found after build" && exit 1
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: "./育升總務部_PWA/dist"
+          publish_dir: "${{ github.workspace }}/育升總務部_PWA/dist"
           publish_branch: gh-pages
