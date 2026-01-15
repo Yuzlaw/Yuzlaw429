@@ -1,12 +1,24 @@
 import { jsxLocPlugin } from "@builder.io/vite-plugin-jsx-loc";
 import tailwindcss from "@tailwindcss/vite";
 import react from "@vitejs/plugin-react";
+import { VitePWA } from "vite-plugin-pwa";
 import fs from "node:fs";
 import path from "path";
 import { defineConfig } from "vite";
-const plugins = [react(), tailwindcss(), jsxLocPlugin()];
+
+const plugins = [
+  react(),
+  tailwindcss(),
+  jsxLocPlugin(),
+  VitePWA({
+    registerType: "autoUpdate",
+    includeAssets: ["icon-192.png", "icon-512.png", "favicon.ico"],
+    manifest: false,
+  }),
+];
 
 export default defineConfig({
+  base: "/Yuzlaw429/",
   plugins,
   resolve: {
     alias: {
