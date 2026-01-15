@@ -1,7 +1,7 @@
 {
-  "name": "育昇總務部｜備忘錄 PWA",
-  "short_name": "備忘錄",
-  "description": "像 iPhone 備忘錄一樣的筆記工具（離線可用，可選同步/AI）",
+  "name": "育昇小總務",
+  "short_name": "小總務",
+  "description": "像 iPhone 備忘錄一樣��筆記工具（離線可用，可選同步/AI）",
   "start_url": "./",
   "display": "standalone",
   "background_color": "#ffffff",
@@ -21,10 +21,7 @@
       "purpose": "any maskable"
     }
   ],
-  "categories": [
-    "productivity",
-    "utilities"
-  ],
+  "categories": ["productivity", "utilities"],
   "shortcuts": [
     {
       "name": "新增筆記",

@@ -59,3 +59,18 @@ createRoot(document.getElementById("root")!).render(
     </QueryClientProvider>
   </trpc.Provider>
 );
+
+
+// 註冊 Service Worker (PWA 支援)
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js', { scope: '/' }).then(
+      (registration) => {
+        console.log('Service Worker 註冊成功:', registration.scope);
+      },
+      (error) => {
+        console.error('Service Worker 註冊失敗:', error);
+      }
+    );
+  });
+}
