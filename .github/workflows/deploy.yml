@@ -20,21 +20,21 @@ jobs:
         with:
           node-version: 20
 
-      - name: Install & Build
+      - name: 安裝與建置
         working-directory: "育昇總務部_PWA"
         run: |
-          npm ci || npm install
+          npm install --no-fund --no-audit
           npm run build
 
-      - name: Detect output folder
+      - name: 偵測輸出資料夾
         id: out
         working-directory: "育昇總務部_PWA"
         run: |
           if [ -d "dist" ]; then echo "dir=dist" >> $GITHUB_OUTPUT; exit 0; fi
           if [ -d "build" ]; then echo "dir=build" >> $GITHUB_OUTPUT; exit 0; fi
-          echo "No dist or build folder found after build" && exit 1
+          echo "建置後找不到 dist 或 build 資料夾" && exit 1
 
-      - name: Deploy to gh-pages
+      - name: 部署到 gh-pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
