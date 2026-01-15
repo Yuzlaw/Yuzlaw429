@@ -1,0 +1,57 @@
+[
+  {
+    "symbol": "0056.TW",
+    "name": "Yuanta/P-shares Taiwan Dividend Plus ETF",
+    "currency": "TWD",
+    "currentPrice": 36.41,
+    "previousClose": 0,
+    "dayHigh": 36.69,
+    "dayLow": 36.41,
+    "volume": 28176278,
+    "exchange": "TAI"
+  },
+  {
+    "symbol": "00878.TW",
+    "name": "Cathay Sustainability High Dividend ETF",
+    "currency": "TWD",
+    "currentPrice": 21.38,
+    "previousClose": 0,
+    "dayHigh": 21.47,
+    "dayLow": 21.36,
+    "volume": 34088805,
+    "exchange": "TAI"
+  },
+  {
+    "symbol": "00919.TW",
+    "name": "Capital Tip Customized Taiwan Select High Dividend ETF",
+    "currency": "TWD",
+    "currentPrice": 21.5,
+    "previousClose": 0,
+    "dayHigh": 21.65,
+    "dayLow": 21.49,
+    "volume": 65038606,
+    "exchange": "TAI"
+  },
+  {
+    "symbol": "00900.TW",
+    "name": "Fubon Taiwan high dividend 30 ETF",
+    "currency": "TWD",
+    "currentPrice": 13.41,
+    "previousClose": 0,
+    "dayHigh": 13.53,
+    "dayLow": 13.4,
+    "volume": 18969006,
+    "exchange": "TAI"
+  },
+  {
+    "symbol": "00713.TW",
+    "name": "Yuanta Taiwan High Dividend Low Volatility ETF",
+    "currency": "TWD",
+    "currentPrice": 51.2,
+    "previousClose": 0,
+    "dayHigh": 51.4,
+    "dayLow": 51.1,
+    "volume": 6394149,
+    "exchange": "TAI"
+  }
+]

@@ -1,0 +1,42 @@
+{
+  "name": "育昇總務部｜備忘錄 PWA",
+  "short_name": "備忘錄",
+  "description": "像 iPhone 備忘錄一樣的筆記工具（離線可用，可選同步/AI）",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#007AFF",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "./icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": [
+    "productivity",
+    "utilities"
+  ],
+  "shortcuts": [
+    {
+      "name": "新增筆記",
+      "short_name": "新筆記",
+      "description": "快速建立新筆記",
+      "url": "./notes/new",
+      "icons": [
+        {
+          "src": "./icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ]
+}

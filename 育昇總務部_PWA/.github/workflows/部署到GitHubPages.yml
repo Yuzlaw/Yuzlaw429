@@ -1,0 +1,56 @@
+name: 部署到 GitHub Pages（PWA）
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 取回原始碼
+        uses: actions/checkout@v4
+
+      - name: 安裝 Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+
+      - name: 安裝依賴
+        run: npm install
+
+      - name: 建置（自動套用 GitHub Pages 子路徑）
+        run: npx vite build --base=/${{ github.event.repository.name }}/
+
+      # React Router / SPA 在 GitHub Pages 直接打子路徑會 404：用 404.html fallback
+      - name: 產生 SPA 轉址用 404.html
+        run: |
+          cp dist/public/index.html dist/public/404.html
+
+      - name: 上傳 Pages Artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist/public
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: 部署到 GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
