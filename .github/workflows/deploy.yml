@@ -16,23 +16,23 @@ jobs:
     steps:
       - name: 檢出代碼
         uses: actions/checkout@v4
-        
+
       - name: 安裝 Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          
+
       - name: 安裝 pnpm
         uses: pnpm/action-setup@v2
         with:
           version: 8
-          
+
       - name: 安裝依賴並構建
         run: |
           cd "${{ github.workspace }}/repo_ai"
           pnpm install
           pnpm run build
-          
+
       - name: 部署到 GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
