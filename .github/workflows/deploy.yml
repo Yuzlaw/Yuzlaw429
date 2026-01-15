@@ -17,8 +17,7 @@ jobs:
           node-version: 20
       - name: Install & Build
         run: |
-    cd "$(find "${{ github.workspace }}" -type d -name itinerary_pwa | head -1)"          npm install --legacy-peer-deps
-          npm run build
+    for dir in "${{ github.workspace }}"/*PWA/itinerary*; do cd "$dir"; done          npm run build
       - name: Detect output folder
         id: out
         run: |
@@ -36,4 +35,4 @@ jobs:
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-    publish_dir: "$(find ${{ github.workspace }} -type d -name dist | head -1)"          publish_branch: gh-pages
+    publish_dir: ${{ github.workspace }}/*PWA/*/dist
