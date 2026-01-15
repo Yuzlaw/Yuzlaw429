@@ -1,40 +1,40 @@
-name: Deploy to GitHub Pages
+name: 部署 PWA 到 GitHub Pages
+
 on:
   push:
     branches: [ "main" ]
   workflow_dispatch:
+
 permissions:
   contents: write
+  pages: write
+  id-token: write
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: 檢出代碼
         uses: actions/checkout@v4
-      - name: Setup Node
+        
+      - name: 安裝 Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
-      - name: Install & Build
-        run: | 
-      cd "${{ github.workspace }}"/育升總務部_PWA/itinerary_pwa
-      npm install --legacy-peer-deps
-      npm run build
-      - name: Detect output folder
-        id: out
+          
+      - name: 安裝 pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+          
+      - name: 安裝依賴並構建
         run: |
-          for dir in "${{ github.workspace }}"/*PWA; do
-            if [ -d "$dir/dist" ]; then
-              echo "dir=dist" >> $GITHUB_OUTPUT
-              exit 0
-            elif [ -d "$dir/build" ]; then
-              echo "dir=build" >> $GITHUB_OUTPUT
-              exit 0
-            fi
-          done
-          echo "No dist or build folder found after build" && exit 1
-      - name: Deploy to gh-pages
+          cd "${{ github.workspace }}/repo_ai"
+          pnpm install
+          pnpm run build
+          
+      - name: 部署到 GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-    publish_dir: "${{ github.workspace }}/育升總務部_PWA/itinerary_pwa/dist"
+          publish_dir: "${{ github.workspace }}/repo_ai/dist"
