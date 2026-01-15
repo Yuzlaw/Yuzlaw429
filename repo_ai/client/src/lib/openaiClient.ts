@@ -113,7 +113,7 @@ export async function summarizeAndPolishZhTW(text: string) {
   if (!s) throw new Error("尚未設定 OpenAI API 金鑰");
 
   const prompt =
-    "請用繁體中文對下列內容做「摘要＋潤飾」並用同一份輸出交付。
+    "請用繁體中文對下列內容做「摘要＋潤飾」並用同一份輸出交付。"
 " +
     "要求：
 " +
