@@ -23,7 +23,7 @@ jobs:
       - name: Install & Build
         working-directory: "育昇總務部_PWA"
         run: |
-          npm ci || npm install
+          npm install
           npm run build
 
       - name: Detect output folder
