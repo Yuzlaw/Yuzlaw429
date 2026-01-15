@@ -120,7 +120,7 @@ export async function summarizeAndPolishZhTW(text: string) {
     "3) 格式如 下《範例》並需要保留原文格式。\n" +
     "\n" +
     "內容：\n" +
-    " + text;
+        text;
 
   const url = `${s.baseUrl}/chat/completions`;
   const data = await postJsonWithTimeout(
